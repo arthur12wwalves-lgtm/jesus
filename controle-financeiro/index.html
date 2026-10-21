@@ -303,7 +303,12 @@ document.addEventListener('click',e=>{const tx=e.target.closest('[data-delete-tx
 
     screen.style.display = 'none';
     app.classList.add('authenticated');
+const adminPanel = document.getElementById('adminPanel');
 
+if (adminPanel) {
+  adminPanel.style.display =
+    profile.role === 'admin' ? 'block' : 'none';
+}
     const topRight = document.querySelector('.topright');
 
     if (topRight && !document.getElementById('authLogout')) {
