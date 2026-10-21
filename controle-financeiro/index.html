@@ -120,7 +120,10 @@ $('#budgetForm').addEventListener('submit',e=>{e.preventDefault();const category
 $('#goalForm').addEventListener('submit',e=>{e.preventDefault();const name=$('#goalName').value.trim(),target=Number($('#goalTarget').value),saved=Number($('#goalSaved').value);if(!name||target<=0||saved<0)return;state.goals.push({id:crypto.randomUUID?crypto.randomUUID():String(Date.now()),name,target,saved,icon:'◎'});save();render();e.target.reset();$('#goalSaved').value='0';toast('Meta criada.')});
 document.addEventListener('click',e=>{const tx=e.target.closest('[data-delete-tx]');if(tx){if(confirm('Excluir esta movimentação? Esta ação não pode ser desfeita.')){state.items=state.items.filter(x=>x.id!==tx.dataset.deleteTx);save();render();toast('Movimentação excluída.')}}const bd=e.target.closest('[data-delete-budget]');if(bd){state.budgets=state.budgets.filter(x=>x.category!==bd.dataset.deleteBudget);save();render();toast('Orçamento excluído.')}const gd=e.target.closest('[data-delete-goal]');if(gd){state.goals=state.goals.filter(x=>x.id!==gd.dataset.deleteGoal);save();render();toast('Meta excluída.')}const add=e.target.closest('[data-add-goal]');if(add){const goal=state.goals.find(x=>x.id===add.dataset.addGoal);if(!goal)return;const raw=prompt(`Quanto deseja adicionar à meta "${goal.name}"? (R$)`);if(raw===null)return;const amount=Number(raw.replace(/\./g,'').replace(',','.'));if(!Number.isFinite(amount)||amount<=0){toast('Informe um valor válido.');return}goal.saved+=amount;save();render();toast('Progresso da meta atualizado.')}});
 
-<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
+</script>
+
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
  
 <script>
   const SUPABASE_URL = 'https://alfbdptlkierjjffhmfc.supabase.co';
