@@ -208,6 +208,39 @@ document.addEventListener('click',e=>{const tx=e.target.closest('[data-delete-tx
   }
 </style>
 
+<div id="adminPanel" style="display:none; padding:24px; font-family:system-ui,sans-serif;">
+  <h2>Painel do Administrador</h2>
+  <p>Gerenciamento de usuários do Jesus Finance.</p>
+
+  <div style="display:flex;gap:12px;flex-wrap:wrap;margin:20px 0;">
+    <div style="padding:16px;border:1px solid #ddd;border-radius:12px;">
+      <strong>Usuários cadastrados</strong>
+      <h2 id="adminUserCount">—</h2>
+    </div>
+  </div>
+
+  <button id="loadAdminUsers" type="button"
+    style="padding:10px 14px;border:0;border-radius:8px;background:#5865f2;color:white;cursor:pointer;">
+    Atualizar usuários
+  </button>
+
+  <p id="adminMessage" role="status"></p>
+
+  <div style="overflow-x:auto;">
+    <table style="width:100%;border-collapse:collapse;margin-top:16px;">
+      <thead>
+        <tr>
+          <th style="text-align:left;padding:10px;border-bottom:1px solid #ddd;">ID do usuário</th>
+          <th style="text-align:left;padding:10px;border-bottom:1px solid #ddd;">Perfil</th>
+        </tr>
+      </thead>
+      <tbody id="adminUsersList">
+        <tr><td colspan="2" style="padding:10px;">Clique em “Atualizar usuários”.</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
 <div id="authScreen">
   <div id="authCard">
     <h1>Jesus Finance</h1>
